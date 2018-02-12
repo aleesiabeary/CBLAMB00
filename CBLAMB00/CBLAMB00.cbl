@@ -33,6 +33,7 @@
 				   10 I-INIT              PIC X.
 			   05 I-GPA                   PIC 9V99.
 		       05 I-EX-STRT-SAL           PIC 9(6)V99.
+               
 
 	   FD  PRTOUT
 		   LABEL RECORD IS OMITTED
@@ -51,6 +52,8 @@
                10  CURRENT-TIME      PIC X(11).
            05  C-PCTR                PIC 99       VALUE 0.
            05  C-STUCTR              PIC 99       VALUE 0.
+           05  SALARY-TAX            PIC 9(9)V99  VALUE 0.
+           05  FINAL-SAL             PIC 9(7)V99  VALUE 0.
        01  HEADING1.
            05  FILLER               PIC X(6)     VALUE 'DATE: '.
            05  H1-DATE.
@@ -133,13 +136,15 @@
 
        L3-CALCS.
            ADD 1 TO C-STUCTR.
+           COMPUTE SALARY-TAX = I-EX-STRT-SAL * .25.
+           COMPUTE FINAL-SAL = I-EX-STRT-SAL - SALARY-TAX.
 
        L3-MOVES.
            MOVE I-ID           TO O-ID.
            MOVE I-LNAME        TO O-LAST-NAME.
            MOVE I-FNAME        TO O-FIRST-NAME.
            MOVE I-GPA          TO O-GPA.
-           MOVE I-EX-STRT-SAL  TO O-SALARY.
+           MOVE FINAL-SAL      TO O-SALARY.
            WRITE PRTLINE FROM DETAIL-LINE
                AFTER ADVANCING 2 lines
                    AT eop
