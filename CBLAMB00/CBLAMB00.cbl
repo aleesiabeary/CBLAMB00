@@ -4,7 +4,7 @@
 	   DATE-WRITTEN. 11/27/2017
 
 ************************************************************************
-***********
+*******This program is the first COBOL program I have ever made. 
 ************************************************************************
 
        environment division.
@@ -61,7 +61,7 @@
                10  H1-YEAR          PIC 9999.
            05  FILLER               PIC X(35)    VALUE SPACES.
            05  FILLER               PIC X(29)
-                   VALUE 'WILSON S COBOL STUDENT ROSTER'.
+                   VALUE 'PETTER S COBOL STUDENT ROSTER'.
            05  FILLER               PIC X(44)    VALUE SPACES.
            05  FILLER               PIC X(6)     VALUE 'PAGES: '.
            05  HI-PAGE              PIC Z9.
